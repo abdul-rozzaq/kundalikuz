@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>{{ day }}</h1>
+    <hr>
+
+    {% if contents %}
+        {% for content in contents %}
+
+        <p>
+            <div>
+                {{ content.text }}
+            </div>
+            <div>
+                <b>{{ content }}</b>
+                <a href="{% url 'delete_content' content.pk %}">O'chirish</a>
+            </div>
+        </p>
+
+        {% endfor %}
+    {% else %}
+        <p>No content yet.</p>
+    {% endif %}
+
+    <hr>
+    <form method="POST">{% csrf_token %}
+        <div>
+            <textarea name="body" style="max-width: 100%; min-width: 100%;" rows="3"></textarea>
+        </div>
+        <input type="submit" value="Qo'shish">
+    </form>
+    
+</body>
+</html>

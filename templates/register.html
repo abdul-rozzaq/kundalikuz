@@ -1,0 +1,44 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Register</h2>
+    <hr>
+
+    <form method="POST">{% csrf_token %}
+        <fieldset>
+            <legend>Ma'lumotlaringizni kiriting</legend>
+            <div>
+                <input type="text" placeholder="Username" name="username">
+            </div>
+            <br>
+            <div>
+                <input type="password" placeholder="Password" name="password1">
+            </div>
+            <br>
+            <div>
+                <input type="password" placeholder="Password confirmation" name="password2">
+            </div>
+            <br>
+            <button>Submit</button>
+            <a href="{% url 'login' %}">Kirish</a>
+            
+        </fieldset>
+    </form>
+    
+    <br>
+    
+    {% if error %}
+        <ul>
+            <li>{{ error }}</li>
+        </ul>
+    {% endif %}
+
+</body>
+</html>
